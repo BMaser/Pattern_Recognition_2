@@ -12,7 +12,7 @@ The Pattern Recognition 2 course was conducted in WS 2018.
 - **Hugo Platzer** <br/>
    [https://github.com/HugoPlatzer](https://github.com/HugoPlatzer)
    
-- **Babak Maser** <br/>
+- **B. Maser** <br/>
    [https://github.com/BMaser](https://github.com/BMaser)
    
 
