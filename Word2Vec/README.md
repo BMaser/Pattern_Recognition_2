@@ -1,4 +1,4 @@
-## Pattern_Recognition_2
+# Pattern Recognition 2 Project
 
 
-# Word2Vec
+## Word2Vec
