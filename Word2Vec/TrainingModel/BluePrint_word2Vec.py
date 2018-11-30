@@ -116,17 +116,8 @@ x_train,y_train,dic_wordind,dic_indword,vocab_size = data_processing(corpus_raw,
 
 # In[28]:
 
-
-#---------------------------------------------
-# Build the Neural Net and Invoke training
-#---------------------------------------------
-# Placeholders for Input output
-#----------------------------------------------
 x = tf.placeholder(tf.float32,[None,vocab_size])
 y = tf.placeholder(tf.float32,[None,vocab_size])
-#---------------------------------------------
-# Define the Embedding matrix weights and a bias
-#----------------------------------------------
 
 emb_dims = 128
 learning_rate = 0.001
@@ -147,7 +138,7 @@ batch = len(x_train)//batch_size
 # train for n_iter iterations
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    print ('was here')
+    print ('.......')
     for epoch in xrange(epochs):
         batch_index = 0 
         for batch_num in xrange(batch):
@@ -161,15 +152,15 @@ with tf.Session() as sess:
 # In[29]:
 
 
-from sklearn.manifold import TSNE
-import matplotlib.pyplot as plt
-get_ipython().magic(u'matplotlib inline')
-W_embedded = TSNE(n_components=2).fit_transform(W_embed_trained)
-plt.figure(figsize=(10,10))
-for i in xrange(len(W_embedded)):
-    plt.text(W_embedded[i,0],W_embedded[i,1],dic_indword[i])
-
-plt.xlim(-400,400)
-plt.ylim(-400,400)
-print ("TSNE plot of the Word Vector Embeddings")
+# from sklearn.manifold import TSNE
+# import matplotlib.pyplot as plt
+# get_ipython().magic(u'matplotlib inline')
+# W_embedded = TSNE(n_components=2).fit_transform(W_embed_trained)
+# plt.figure(figsize=(10,10))
+# for i in xrange(len(W_embedded)):
+#     plt.text(W_embedded[i,0],W_embedded[i,1],dic_indword[i])
+#
+# plt.xlim(-400,400)
+# plt.ylim(-400,400)
+# print ("TSNE plot of the Word Vector Embeddings")
 
