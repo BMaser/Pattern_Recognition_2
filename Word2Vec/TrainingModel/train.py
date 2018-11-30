@@ -62,7 +62,7 @@ def main():
                       default="../ExtractSentences/ef_top1000.txt")
   parser.add_argument("-t", "--trainingFile",
                       default="../ExtractSentences/skipgrams/news_10k.txt")
-  parser.add_argument("-e", "--epochs", default=1)
+  parser.add_argument("-e", "--epochs", type=int, default=1)
   parser.add_argument("-d", "--embeddingDimensions", type=int, default=128)
   parser.add_argument("-r", "--learningRate", type=float, default=0.1)
   parser.add_argument("-b", "--batchSize", type=int, default=10)
