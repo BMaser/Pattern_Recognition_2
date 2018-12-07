@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 import sys, argparse
-import sentences
 
 def readWords():
   lines = [l.strip().lower() for l in sys.stdin.readlines() if not l.isspace()]
@@ -9,9 +8,12 @@ def readWords():
   return words
 
 def countVocabulary(words, vocabulary):
-  counts = [sum(1 for w in words if w == v) for v in vocabulary]
+  counts = [0] * len(vocabulary)
+  vocabularyWords = sorted(vocabulary.keys())
+  for w in words:
+    counts[vocabulary[w]] += 1
   countsValues = sorted(list(set(counts)))
-  countsCounts = [(k, [vocabulary[i] for i in range(len(vocabulary)) if counts[i] == k])
+  countsCounts = [(k, [vocabularyWords[i] for i in range(len(vocabulary)) if counts[i] == k])
                   for k in countsValues]
   return countsCounts
 
@@ -19,7 +21,9 @@ def main():
   parser = argparse.ArgumentParser()
   parser.add_argument("-v", "--vocabularyFile", required=True)
   args = parser.parse_args()
-  vocabulary = sentences.loadVocabulary(args.vocabularyFile)
+  with open(args.vocabularyFile) as f:
+    vocabulary = f.read().splitlines()
+  vocabulary = {v:i for i, v in enumerate(vocabulary)}
   words = readWords()
   counts = countVocabulary(words, vocabulary)
   for count, words in counts:
